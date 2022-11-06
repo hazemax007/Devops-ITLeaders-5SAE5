@@ -1,12 +1,11 @@
 package tn.esprit.rh.achat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,6 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class StockServiceImplTest {
 
     @Autowired
@@ -32,6 +32,7 @@ public class StockServiceImplTest {
         Stock s = new Stock("stock test",10,100);
         Stock savedStock= stockService.addStock(s);
         //	assertEquals(expected+1, stockService.retrieveAllStocks().size());
+        log.info(s.toString());
         assertNotNull(savedStock.getLibelleStock());
         stockService.deleteStock(savedStock.getIdStock());
 
