@@ -26,6 +26,7 @@ public class Reglement implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReglement;
+	
 	private float montantPaye;
 	private float montantRestant;
 	private Boolean payee;
