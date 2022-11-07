@@ -58,7 +58,7 @@
 	<distributionManagement>
 		<repository>
 			<id>deploymentrepo</id>
-			<url>http://192.168.40.10:8081/repository/achat/</url>
+			<url>http://192.168.40.10:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
@@ -75,6 +75,10 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
 			</plugin>
 		</plugins>
 	</build>
