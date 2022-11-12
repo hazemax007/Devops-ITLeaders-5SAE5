@@ -27,7 +27,7 @@ services:
   springboot-be:
     depends_on:
       - mysql-db
-    image: hazemax1997/achat
+    image: hazemax1997/achat:latest
     container_name: springboot-be
     env_file: ./.env
     environment:
@@ -37,7 +37,7 @@ services:
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
+        }'
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
 
