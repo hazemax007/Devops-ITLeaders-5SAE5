@@ -5,7 +5,7 @@ FROM maven:4.0.0-jdk-8
 ARG JAR_FILE=target/achat-1.0.jar 
 
 # cd /opt/app
-WORKDIR /opt/app
+WORKDIR /src/app
 
 # cp target/spring-boot-web.jar /opt/app/app.jar
 COPY ${JAR_FILE} achat.jar
