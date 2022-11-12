@@ -1,7 +1,11 @@
 # For Java 8, try this
-FROM openjdk:8-jdk-alpine
+FROM maven:4.0.0-jdk-8
 
-EXPOSE 8089
+RUN apt-get install curl
+RUN curl -u admin:nexus -o achat.jar "http://192.168.2.0:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar" -L
+
+
+
 # Refer to Maven build -> finalName
 ARG JAR_FILE=target/achat-1.0.jar 
 
@@ -19,3 +23,5 @@ CMD mvn spring-boot:run
 
 # java -jar /opt/app/app.jar
 ENTRYPOINT ["java","-jar","achat.jar"]
+
+EXPOSE 8089
