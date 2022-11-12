@@ -2,7 +2,7 @@
 FROM maven:4.0.0-jdk-8
 
 RUN apt-get install curl
-RUN curl -u admin:nexus -o achat.jar "http://192.168.2.0:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar" -L
+RUN curl -u admin:nexus -o achat.jar "http://192.168.2.0:8081/repository/maven-releases/esprit/rh/achat/1.0/achat-1.0.jar" -L
 
 
 
