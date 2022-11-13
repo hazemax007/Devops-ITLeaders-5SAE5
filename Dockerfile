@@ -11,10 +11,10 @@ WORKDIR /src/app
 COPY ${JAR_FILE} achat.jar
 
 #execute a command-line inside the container:to install the dependencies in pom.xml.
-RUN mvn clean install
+#RUN mvn clean install
 
 #run script mvn spring-boot:run after the image is built.
-CMD mvn spring-boot:run
+#CMD mvn spring-boot:run
 
 # java -jar /opt/app/app.jar
 ENTRYPOINT ["java","-jar","/achat.jar"]
