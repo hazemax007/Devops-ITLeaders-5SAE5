@@ -1,6 +1,7 @@
-version: "3.8"
-services:
+version: "3.3"
 
+
+services:
   mysql-db:
     image: mysql:8
     restart: unless-stopped
