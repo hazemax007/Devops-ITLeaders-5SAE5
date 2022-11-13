@@ -16,6 +16,7 @@
         }
         
         stage('Testing maven') {
+       
             steps {
                 sh "mvn -version"
             }
@@ -36,9 +37,14 @@
         
         stage('MVN SONARQUBE') {
             steps {
-                sh "mvn sonar:sonar -Dsonar.login=91b0020d5592a071c2fe717b8741da0aa19c1cd8" 
+                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.login=91b0020d5592a071c2fe717b8741da0aa19c1cd8" 
             }
         }
+        
+        stage('Build Maven Spring'){
+            steps{
+                sh 'mvn  clean install '
+         }
         
         stage ('NEXUS DEPLOY') {
             steps {
@@ -58,6 +64,7 @@
             steps {
                 echo " Docker login ...."
                 sh 'docker login -u raoudhazid -p 25412980omi'
+                
             }
         }
 
@@ -74,6 +81,8 @@
                sh 'docker-compose up -d'
             }
         } 
+
+
 
         
         
