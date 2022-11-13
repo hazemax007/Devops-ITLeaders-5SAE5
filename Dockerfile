@@ -1,5 +1,5 @@
 # For Java 8, try this
-FROM maven:4.0.0-jdk-8
+FROM openjdk:8-jdk-alpine
 
 # Refer to Maven build -> finalName
 ARG JAR_FILE=target/achat-1.0.jar 
