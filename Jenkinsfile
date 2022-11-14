@@ -22,7 +22,6 @@
             }
         }
         
-
          stage('maven clean'){
             steps{
                 sh 'mvn clean'
@@ -37,7 +36,7 @@
         
         stage('MVN SONARQUBE') {
             steps {
-                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.login=91b0020d5592a071c2fe717b8741da0aa19c1cd8" 
+                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.login=6f869e6b71a5beeedcb1753d2ec23bb499eb5c41" 
             }
         }
         
@@ -45,14 +44,16 @@
             steps{
                 sh 'mvn  clean install '
          }
-        
+        }
+         
+
         stage ('NEXUS DEPLOY') {
             steps {
                 sh 'mvn  clean deploy -DskipTests'
             }
         }
         
-        stage ('BUILD ') {
+        stage ('BUILD  ') {
             steps {
                 sh 'docker build -t raoudhazid/achat:latest .'
                 sh 'docker build -t raoudhazid/mysql:5.7 .'
@@ -80,15 +81,5 @@
             steps {
                sh 'docker-compose up -d'
             }
-        } 
-
-
-
-        
-        
-        
-
- 
-        
-    }
+        } }
 }
