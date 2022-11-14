@@ -61,18 +61,26 @@
         }
         
   
-        
-        
-       stage('Docker Push') {
-    	agent any
-    	steps {
-    	    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: '25412980omi', usernameVariable: 'raoudhazid')]) 
-    	    {
-        	  sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-              sh 'docker push raoudhazid/achat:latest'
+        stage ('Docker Login') {
+            steps {
+                echo " Docker login ...."
+                sh 'docker login -u raoudhazid -p 25412980omi'
+                
+            }
         }
-      }
-    }
+        
+
+
+        stage ('Docker Push') {
+            steps {
+                echo "Docker pushing ...."
+                sh 'docker push raoudhazid/achat:latest'
+               
+            }
+        }  
+        
+        
+        
         
         stage ('Docker Compose') {
             steps {
