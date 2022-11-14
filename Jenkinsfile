@@ -60,12 +60,15 @@
             }
         }
         
-  
-        stage ('Docker Login') {
-            steps {
-                echo " Docker login ...."
-                sh 'docker login -u raoudhazid -p 25412980omi'
-                
+        
+        
+        stage('DOCKER LOGIN'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'raoudhazid', variable: 'dockerhub')]) {
+                        sh 'docker login -u raoudhazid -p ${dockerhub}'
+                    }
+                }
             }
         }
 
