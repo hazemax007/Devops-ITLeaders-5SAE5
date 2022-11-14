@@ -60,23 +60,22 @@
             }
         }
         
-        
-        
-        stage('DOCKER LOGIN'){
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'raoudhazid', variable: 'dockerhub')]) {
-                        sh 'docker login -u raoudhazid -p ${dockerhub}'
-                    }
-                }
+  
+        stage ('Docker Login') {
+            steps {
+                echo " Docker login ...."
+                sh 'docker login -u raoudhazid -p 25412980omi'
+                
             }
         }
+        
+
 
         stage ('Docker Push') {
             steps {
                 echo "Docker pushing ...."
                 sh 'docker push raoudhazid/achat:latest'
-                sh 'docker push raoudhazid/mysql:5.7'
+               
             }
         }  
         
