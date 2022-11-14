@@ -56,7 +56,7 @@
         stage ('BUILD  ') {
             steps {
                 sh 'docker build -t raoudhazid/achat:latest .'
-                sh 'docker build -t raoudhazid/mysql:5.7 .'
+                
             }
         }
         
