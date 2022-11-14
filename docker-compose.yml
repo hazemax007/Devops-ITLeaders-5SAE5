@@ -36,7 +36,7 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     ports:
-      - 9099:8090
+      - 9099:8089
 
 volumes:
   db:
