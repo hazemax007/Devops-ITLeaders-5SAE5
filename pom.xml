@@ -70,6 +70,13 @@
         <version>4.12</version>
         <scope>test</scope>
     </dependency>
+    
+      <dependency>
+    <groupId>org.jacoco</groupId> 
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.6</version>
+        </dependency> 
+    
 
 	</dependencies>
 
@@ -93,40 +100,6 @@
     			<artifactId>maven-resources-plugin</artifactId>
     			<version>3.1.0</version>
 			</plugin>
-			
-			<plugin> 
-    <groupId>org.jacoco</groupId> 
-    <artifactId>jacoco-maven-plugin</artifactId> 
-    <version>0.8.3</version> 
-    <configuration> 
-        <skip>${maven.test. skip}</skip> 
-        <destFile>C:/Users/Nadia/Downloads/crud-tuto-front/achat/achat/target/coverage-reports/jacoco-unit.exec</destFile> 
-        <dataFile>C:/Users/Nadia/Downloads/crud-tuto-front/achat/achat/target/coverage-reports/jacoco-unit.exec</dataFile> 
-        <output>fichier</output> 
-        <append>true</append> 
-        <excludes> 
-            <exclude>*MethodAccess</exclude> 
-        </excludes> 
-    </configuration> 
-    <executions> 
-        <execution> 
-            <id>jacoco-initialize</id> 
-            <goals>
-                <goal>prepare-agent</goal> 
-            </goals> 
-            <phase>test-compile</phase> 
-        </execution> 
-        <execution> 
-            <id>jacoco-site</id> 
-            <phase>verify</phase> 
-            <goals> 
-                <goal>rapport</goal> 
-            </goals> 
-        </execution> 
-    </executions> 
-</plugin>
-			
-			
 		</plugins>
 	</build>
 	
