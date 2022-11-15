@@ -103,7 +103,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
+				<configuration>
+					<propertiesEncoding>ISO-8859-1</propertiesEncoding>
+				</configuration>
 			</plugin>
 			<plugin>
 
@@ -143,17 +146,7 @@
 					</includes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<propertiesEncoding>UTF-8</propertiesEncoding>
-					<nonFilteredFileExtensions>
-						<nonFilteredFileExtension>xls</nonFilteredFileExtension>
-						<nonFilteredFileExtension>zip</nonFilteredFileExtension>
-					</nonFilteredFileExtensions>
-				</configuration>
-			</plugin>
+
 
 		</plugins>
 	</build>
