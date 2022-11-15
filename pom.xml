@@ -86,16 +86,14 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>2.0.2-beta</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.2</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
-
 
 	<build>
 		<plugins>
@@ -111,32 +109,9 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.1</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.5</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<!-- attached to Maven test phase -->
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>3.0.2</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -145,7 +120,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://http://172.10.0.140/:8081/repository/maven-releases/</url>
+			<url>http://:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
