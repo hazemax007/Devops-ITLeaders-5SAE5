@@ -7,3 +7,5 @@ COPY ${JAR_FILE} achat.jar
 ENTRYPOINT ["java","-jar","/achat.jar"]
 
 EXPOSE 8089
+
+	
