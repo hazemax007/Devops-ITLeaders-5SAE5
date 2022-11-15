@@ -2,40 +2,43 @@ package tn.esprit.rh.achat;
 
 
 import static org.junit.Assert.*;
-        import static org.mockito.Mockito.verify;
-        import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-        import java.util.ArrayList;
-        import java.util.Date;
-        import java.util.List;
-        import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-        import org.mockito.ArgumentMatchers;
-        import org.mockito.BDDMockito;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
+import org.mockito.ArgumentMatchers;
+import org.mockito.BDDMockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-        import tn.esprit.rh.achat.entities.Produit;
-        import tn.esprit.rh.achat.entities.Stock;
-        import tn.esprit.rh.achat.repositories.ProduitRepository;
-        import tn.esprit.rh.achat.repositories.StockRepository;
-        import tn.esprit.rh.achat.services.ProduitServiceImpl;
-        import tn.esprit.rh.achat.services.StockServiceImpl;
+import tn.esprit.rh.achat.entities.Produit;
+import tn.esprit.rh.achat.entities.Stock;
+import tn.esprit.rh.achat.repositories.ProduitRepository;
+import tn.esprit.rh.achat.repositories.StockRepository;
+import tn.esprit.rh.achat.services.ProduitServiceImpl;
+import tn.esprit.rh.achat.services.StockServiceImpl;
+
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
+@ExtendWith(MockitoExtension.class)
 
-public class ProductServiceImpTest {
+public class ProductServiceImpMockito {
 
     @Mock
     private ProduitRepository produitRepository;
@@ -49,13 +52,10 @@ public class ProductServiceImpTest {
     @InjectMocks
     private StockServiceImpl stockService;
 
-    //NewProject
-
-
 
     @Test
     @Order(0)
-    public void addProductTest() {
+    public void testAddProduct() {
 
         Produit p = new Produit();
         p.setCodeProduit("123");
@@ -75,13 +75,7 @@ public class ProductServiceImpTest {
     @Order(1)
     public void testRetrieveAllProducts() {
 
-        Produit p1 = new Produit();
-        p1.setCodeProduit("123");
-        p1.setLibelleProduit("tunis");
-        p1.setPrix(1000);
-        p1.setDateCreation(new Date());
-        p1.setDateDerniereModification(new Date());
-
+        Produit p1= new Produit(1L,"167v","tunis",556,new Date(),new Date());
         Produit p2 = new Produit();
         p1.setCodeProduit("999");
         p1.setLibelleProduit("Milk");
@@ -92,11 +86,8 @@ public class ProductServiceImpTest {
         List<Produit> listProds = new ArrayList<Produit>();
         listProds.add(p1);
         listProds.add(p2);
-
         BDDMockito.given(produitRepository.findAll()).willReturn(listProds);
-
         List<Produit> expected = produitService.retrieveAllProduits();
-
         assertEquals(listProds, expected);
         //assertEquals(0, expected);
         verify(produitRepository).findAll();
@@ -105,7 +96,7 @@ public class ProductServiceImpTest {
 
     @Test
     @Order(2)
-    public void updateProduitTest() {
+    public void testUpdateProduct() {
 
         Produit Prod = new Produit();
         Prod.setIdProduit(1L);
@@ -131,7 +122,7 @@ public class ProductServiceImpTest {
 
     @Test
     @Order(3)
-    public void deleteProduitTest() {
+    public void testDeleteProduct() {
 
         Produit p = new Produit();
         p.setIdProduit(1L);
@@ -149,7 +140,7 @@ public class ProductServiceImpTest {
 
     @Test
     @Order(4)
-    public void retrieveProduitTest () {
+    public void testRetrieveProduct () {
 
         Produit Prod = new Produit();
         Prod.setIdProduit(1L);
@@ -170,7 +161,7 @@ public class ProductServiceImpTest {
     }
 
     @Test
-    public void assignProduitToStockTest () {
+    public void testAssignProductToStock () {
 
         Stock S = new Stock();
         S.setIdStock(1L);
