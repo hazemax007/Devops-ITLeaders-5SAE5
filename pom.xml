@@ -102,7 +102,7 @@
 
 	</dependencies>
 
-
+<profile>
 	<build>
 		<plugins>
 			<plugin>
@@ -148,8 +148,9 @@
 			</plugin>
 		</plugins>
 	</build>
+</profile>
 
-	<distributionManagement>
+<distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
