@@ -1,4 +1,8 @@
 FROM openjdk:11
 EXPOSE 8082
-ADD target/tpAchatProject-1.0.jar tpAchatProject-1.0.jar
-ENTRYPOINT ["java","-jar","/tpAchatProject-1.0.jar"]
+ARG APP_NAME="product-service"
+ARG APP_VERSION="0.0.1"
+ARG JAR_FILE="/build/libs/${APP_NAME}-${APP_VERSION}.jar"
+
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar", "app.jar"]
