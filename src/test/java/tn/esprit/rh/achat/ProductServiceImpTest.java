@@ -10,16 +10,18 @@ import static org.junit.Assert.*;
         import java.util.List;
         import java.util.Optional;
 
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+
+
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-        import org.mockito.ArgumentMatchers;
-        import org.mockito.BDDMockito;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -30,10 +32,10 @@ import org.springframework.test.context.junit4.SpringRunner;
         import tn.esprit.rh.achat.services.ProduitServiceImpl;
         import tn.esprit.rh.achat.services.StockServiceImpl;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Slf4j
+@ExtendWith(MockitoExtension.class)
 
 public class ProductServiceImpTest {
 
@@ -50,12 +52,15 @@ public class ProductServiceImpTest {
     private StockServiceImpl stockService;
 
     //NewProject
-
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
 
     @Test
     @Order(0)
-    public void addProductTest() {
+    public void testAddProduct() {
 
         Produit p = new Produit();
         p.setCodeProduit("123");
@@ -105,7 +110,7 @@ public class ProductServiceImpTest {
 
     @Test
     @Order(2)
-    public void updateProduitTest() {
+    public void testUpdateProduct() {
 
         Produit Prod = new Produit();
         Prod.setIdProduit(1L);
@@ -131,7 +136,7 @@ public class ProductServiceImpTest {
 
     @Test
     @Order(3)
-    public void deleteProduitTest() {
+    public void testDeleteProduct() {
 
         Produit p = new Produit();
         p.setIdProduit(1L);
@@ -141,15 +146,16 @@ public class ProductServiceImpTest {
         p.setDateCreation(new Date());
         p.setDateDerniereModification(new Date());
 
-        when(produitRepository.findById(p.getIdProduit())).thenReturn(Optional.of(p));
+        Mockito.lenient().when(produitRepository.findById(p.getIdProduit())).thenReturn(Optional.of(p));
         produitService.deleteProduit(p.getIdProduit());
         verify(produitRepository).deleteById(p.getIdProduit());
+
 
     }
 
     @Test
     @Order(4)
-    public void retrieveProduitTest () {
+    public void testRetrieveProduct () {
 
         Produit Prod = new Produit();
         Prod.setIdProduit(1L);
@@ -170,7 +176,7 @@ public class ProductServiceImpTest {
     }
 
     @Test
-    public void assignProduitToStockTest () {
+    public void testAssignProductToStock () {
 
         Stock S = new Stock();
         S.setIdStock(1L);
