@@ -1,13 +1,5 @@
 version: "3"
 services:
-  soanrqube:
-      image: sonarqube:8.9.7-community
-      ports:
-        - "9000:9000"
-  nexus:
-    image: sonatype/nexus3
-    ports:
-      - "8081:8081"
   mysql-standalone:
     image: mysql:latest
     environment:
