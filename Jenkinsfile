@@ -106,7 +106,5 @@
                             from: 'raoudha.zid@esprit.tn',
                             body: " ther's a changes in ur jenkins build "
                         }
-                    }
-
 
 }
