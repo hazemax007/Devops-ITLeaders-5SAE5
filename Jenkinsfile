@@ -19,7 +19,7 @@
         stage('PACKAGING') {
             steps {
                 sh "mvn compiler:compile"
-                 sh 'mvn  clean install '
+                 sh "mvn  clean install ""
             }
         }
 
@@ -33,21 +33,17 @@
                 sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.login=4ff83c8cef6d630c43d7943e114eef445e663fb3"
             }
         }
-
-
         stage ('NEXUS DEPLOY') {
             steps {
                 sh 'mvn  clean deploy -DskipTests'
             }
         }
-
         stage ('BUILD DOCKER IMAGES') {
             steps {
                 sh 'docker build -t raoudhazid/achat:latest .'
 
             }
         }
-
         stage ('Docker Login') {
             steps {
                 echo " Docker login ...."
@@ -55,7 +51,6 @@
 
             }
         }
-
         stage ('Docker Push') {
 
             steps {
@@ -94,5 +89,6 @@
                             from: 'raoudha.zid@esprit.tn',
                             body: " ther's a changes in ur jenkins build "
                         }
+     }
 
 }
