@@ -16,7 +16,7 @@
             }
         }
 
-        stage('MVN BUILD/COMPILE') {
+        stage('PACKAGING') {
             steps {
                 sh "mvn compiler:compile"
                  sh 'mvn  clean install '
