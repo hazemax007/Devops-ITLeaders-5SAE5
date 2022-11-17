@@ -16,17 +16,10 @@
             }
         }
 
-
-
-         stage('MVN CLEAN'){
-            steps{
-                sh 'mvn clean'
-            }
-        }
-
-        stage('MVN COMILE') {
+        stage('MVN BUILD/COMPILE') {
             steps {
                 sh "mvn compiler:compile"
+                 sh 'mvn  clean install '
             }
         }
 
@@ -41,11 +34,6 @@
             }
         }
 
-        stage('Build Maven Spring'){
-            steps{
-                sh 'mvn  clean install '
-         }
-        }
 
         stage ('NEXUS DEPLOY') {
             steps {
