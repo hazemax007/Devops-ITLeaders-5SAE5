@@ -21,8 +21,7 @@ public class StockRestController {
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
 	public List<Stock> getStocks() {
-		List<Stock> list = stockService.retrieveAllStocks();
-		return list;
+		return stockService.retrieveAllStocks();
 	}
 
 	@GetMapping("/retrieve-stock/{stock-id}")
@@ -44,7 +43,7 @@ public class StockRestController {
 		stockService.deleteStock(stockId);
 	}
 
-	@PutMapping("/modify-stock")
+	@PutMapping(path = "/modify-stock")
 	@ResponseBody
 	public Stock modifyStock(@RequestBody Stock stock) {
 		return stockService.updateStock(stock);

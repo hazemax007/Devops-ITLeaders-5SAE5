@@ -18,12 +18,8 @@ public class StockServiceImpl implements IStockService {
 	StockRepository stockRepository;
 	@Override
 	public List<Stock> retrieveAllStocks() {
-		List<Stock> stocks = (List<Stock>) stockRepository.findAll();
-		for (Stock stock : stocks) {
-			//log.info(" Stock : " + stock);
-		}
 
-		return stocks;
+		return stockRepository.findAll();
 	}
 
 	@Override
@@ -45,11 +41,7 @@ public class StockServiceImpl implements IStockService {
 
 	@Override
 	public Stock retrieveStock(Long stockId) {
-		long start = System.currentTimeMillis();
-		Stock stock = stockRepository.findById(stockId).orElse(null);
-		 long elapsedTime = System.currentTimeMillis() - start;
-
-		return stock;
+		return stockRepository.findById(stockId).orElse(null);
 	}
 
 	@Override
@@ -59,11 +51,11 @@ public class StockServiceImpl implements IStockService {
 		String msgDate = sdf.format(now);
 		String finalMessage = "";
 		String newLine = System.getProperty("line.separator");
-		List<Stock> stocksEnRouge = (List<Stock>) stockRepository.retrieveStatusStock();
-		for (int i = 0; i < stocksEnRouge.size(); i++) {
+		List<Stock> stocksEnRouge = stockRepository.retrieveStatusStock();
+		for (Stock stock : stocksEnRouge) {
 			finalMessage = newLine + finalMessage + msgDate + newLine + ": le stock "
-					+ stocksEnRouge.get(i).getLibelleStock() + " a une quantité de " + stocksEnRouge.get(i).getQte()
-					+ " inférieur à la quantité minimale a ne pas dépasser de " + stocksEnRouge.get(i).getQteMin()
+					+ stock.getLibelleStock() + " a une quantité de " + stock.getQte()
+					+ " inférieur à la quantité minimale a ne pas dépasser de " + stock.getQteMin()
 					+ newLine;
 
 		}
