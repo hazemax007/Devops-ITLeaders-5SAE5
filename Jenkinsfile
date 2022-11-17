@@ -19,7 +19,7 @@
         stage('PACKAGING') {
             steps {
                 sh "mvn compiler:compile"
-                 sh "mvn  clean install ""
+                 sh "mvn  clean install "
             }
         }
 
