@@ -30,6 +30,8 @@ services:
         }'
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    volumes:
+      - db:/var/lib/springBoot
 
 volumes:
   db:
