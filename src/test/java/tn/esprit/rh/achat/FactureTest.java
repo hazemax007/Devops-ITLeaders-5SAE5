@@ -53,4 +53,12 @@ public class FactureTest {
 		assertEquals(f, factureService.addFacture(f));
 	}
 	
+	public void getFactureByFournisseurTest() {
+		when(factureRepository.findAll()).thenReturn((List<Facture>) Stream
+				.of(new Facture(32.65f,164.84f,new Date("15/10/2022"),new Date("23/10/2022"),true,null,null,null),new Facture(21.45f,139.41f,new Date("17/10/2022"),new Date("27/10/2022"),true,null,null,null))
+				.collect(Collectors.toList()));
+		assertEquals(2,factureService.retrieveAllFactures().size());
+	}
+	
+	
 }
