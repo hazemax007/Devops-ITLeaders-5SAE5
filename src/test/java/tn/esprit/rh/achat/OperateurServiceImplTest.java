@@ -83,31 +83,4 @@ public class OperateurServiceImplTest {
 
     }
 	
-	/* @Test
-	public void addOperateurTest() {
-		
-			Operateur o = new Operateur(6L,"Ouanes","Nadia","123",null);
-			Operateur savedOperateur= operateurService.addOperateur(o);
-			assertNotNull(savedOperateur.getNom());
-			assertNotNull(savedOperateur.getPrenom());
-			assertNotNull(savedOperateur.getPassword());
-	}
-	
-	@Test
-	public void retrieveAllOperateursTest() {
-		operateurService.retrieveAllOperateurs();
-	}
-	
-	@Test
-	public void retrieveOperateurTest() {
-		operateurService.retrieveOperateur(1L);
-	}
-	
-	@Test
-	public void deleteOperateurTest() {
-		//Stock s = new Stock("stock test",30,60);
-		//Stock savedStock= stockService.addStock(s);
-		operateurService.deleteOperateur(7L);
-		//assertNull(stockService.retrieveStock(savedStock.getIdStock()));
-	} */
 }
